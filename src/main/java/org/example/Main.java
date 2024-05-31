@@ -45,17 +45,37 @@ public class Main {
                     break;
 
                 case "article list":
-                    if(articles.isEmpty()){// 리스트가 비어있으면 ture이기 때문에
+                    if (articles.isEmpty()) {// 리스트가 비어있으면 ture이기 때문에
                         System.out.println("게시물이 존재하지 않습니다");
-                    }else{
+                    } else {
                         System.out.println("번호\t\t제목\t\t내용");
-                        for(int i = articles.size() - 1; i >= 0; i--){
+                        for (int i = articles.size() - 1; i >= 0; i--) {
                             Article articleItem = articles.get(i);
                             System.out.printf("%d\t\t\t%s\t\t\t%s\n", articleItem.id, articleItem.title, articleItem.body);
                         }
                     }
                     break;
-                default:
+
+                case "article detail":
+                    System.out.print("보고자 하는 게시물 번호: ");
+                    int id = Integer.parseInt(sc.nextLine().trim());
+
+                    Article foundArticle = null;
+                    for (Article detail : articles) {
+                        if (detail.id == id) {
+                            foundArticle = detail;
+                            break;
+                        }
+                    }
+
+                    if (foundArticle == null) {
+                        System.out.printf("%d번 게시물은 존재하지 않습니다\n", id);
+                    } else {
+                        System.out.printf("번호: %d\n제목: %s\n내용: %s\n", foundArticle.id, foundArticle.title, foundArticle.body);
+                    }
+                    break;
+
+                        default:
                     System.out.print("존재하지 않는 명령어입니다\n");
             }
         }
