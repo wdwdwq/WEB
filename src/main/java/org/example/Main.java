@@ -1,6 +1,5 @@
 package org.example;
 
-import static org.example.Main2.Math2.isPrimeNumber;
 
 //문제 : 1부터 n까지 소수의 합 출력하는 함수를 만들어주세요
 class Main {
@@ -15,15 +14,35 @@ class Main {
     }
 }
 
-class Math {
-
-     static int one_to_n_prime_numbers_sum(int n) {
-        int sum = 0; // 값 초기화
-        for (int i = 2; i <= n; i++) {
+class Math{
+    static int one_to_n_prime_numbers_sum(int n){
+        int count = 0;
+        for(int i = 1; i <= n; i++){
             if(isPrimeNumber(i)){
+//                System.out.println(i);
+                count++;
+            }
+        }
+        return count;
+    }
+    static boolean isPrimeNumber(int num) {
+        if (num == 1) {
+            return false;
+        }
+        int sum = 0;
+        for (int i = 1; i <= num; i++) {
+            if (num % i == 0) {
                 sum += i;
             }
         }
-          return sum;
+        return sum == num + 1;
+
     }
+
 }
+
+
+
+
+
+
