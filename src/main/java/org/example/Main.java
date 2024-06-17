@@ -2,22 +2,13 @@ package org.example; // org.example 패키지에 속해 있음
 
 public class Main {
     public static void main(String[] args) {
-        int 결과1 = Math.nToMSum(2, 3);
-        System.out.println("결과1 : " + 결과1);
-        // 출력 : 결과1 : 5
+        // 정수만 담을 수 있는 변수 x 생성
+        //x에 초기값 0이 들어간다 정수가 아닌 값이 들어있으면 안되니까
+        //int에는 정수만 들어갈 수 있다.
+        int x;
 
-        int 결과2 = Math.nToMSum(5, 10);
-        System.out.println("결과2 : " + 결과2);
-        // 출력 : 결과2 : 45
+        // 20을 저장한다.
+        x = 20;
     }
 }
 
-class Math {
-    public static int nToMSum(int a, int b) {
-        int sum = 0;
-        for(int j = a; j <= b; j++){
-            sum += j;
-        }
-        return sum;
-    }
-}
