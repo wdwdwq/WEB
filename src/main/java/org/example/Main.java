@@ -1,14 +1,18 @@
 package org.example; // org.example 패키지에 속해 있음
 
-public class Main {
-    public static void main(String[] args) {
-        // 정수만 담을 수 있는 변수 x 생성
-        //x에 초기값 0이 들어간다 정수가 아닌 값이 들어있으면 안되니까
-        //int에는 정수만 들어갈 수 있다.
-        int x;
+public// 문제 : 사람을 말하게 해주세요.
 
-        // 20을 저장한다.
-        x = 20;
+class Main {
+    public static void main(String[] args) {
+        사람 a사람 = new 사람();
+        a사람.말하다();
+    }
+}
+
+class 사람 {
+    // 사람은 `말하다` 라는 기능을 가지고 있습니다.
+    void 말하다() {
+        System.out.println("사람이 말합니다.");
     }
 }
 
