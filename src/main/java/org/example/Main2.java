@@ -36,22 +36,45 @@ public class Main2 {
                 Article article = new Article(lasArticleId, title, body); //제목을 입력받아 Article 객체를 생성함
                 articles.add(article);//article 리스트에 추가하고, 게시물 생성 메시지를 출력한다.
             }
-            else if(cmd.equals("article list")){// 만약에 article list를 입력하면 명령어를 실행하는데
-                if(articles.size() == 0){ // articles리스트 안에 아무것도 없으면
+            else if(cmd.equals("article list")) {// 만약에 article list를 입력하면 명령어를 실행하는데
+                if (articles.size() == 0) { // articles리스트 안에 아무것도 없으면
                     System.out.println("게시물이 존재하지 않습니다");// 게시물이 존재하지 않습니다를 출력해라
                     continue;// 그 다음 프로그램 처음으로 돌아간다
                 }
 
                 System.out.println("번호  /   제목");
-                for(int i = articles.size() -1; i >= 0; i--){
+                for (int i = articles.size() - 1; i >= 0; i--) {
                     //int i = articles.size() - 1 article.size는 articles의 리스트 요소 개수를 반환다
                     //-1은 리스트의 마지막 요소 개수를 반환한다.(인덱스는 0부터 시작하기 때문에 크기에서 1을 뺀다)
                     //인덱스가 0 이상일 때 실행된다
                     //i-- 반복이 끝날때마다 반복해서 i의 값을 감소시킨다
                     //리스트의 인덱스가 처음(0)까지 도달할 때까지 루프를 실행한다
                     Article article = articles.get(i);//i 해당하는 Article 를 반환한다
-                    System.out.printf("%d	/	%s\n",article.id,article.title);
+                    System.out.printf("%d	/	%s\n", article.id, article.title);
                 }// 확면에 보여준다 id(번호),title(제목)
+            } else if (cmd.startsWith("article detail")) { //입력한 명령어가 article detail로 시작하는지 확인함
+             String[] cmdBits = cmd.split(" "); //입력받은 명령어를 공백 지준으로 분리해서 배열에 저장한다
+             int id = Integer.parseInt(cmdBits[2]); // cmdBits[2]는 분리된 배열 세번째 요소로 cmdBits
+                //["article", "detail", "?"] 가 저장되고
+                //article detail [게시물 번호] 구조로 명령어가 되어 있는데
+                // 배열 안에 2가 세번째에 해당하는 것이고 그게 찾아야 할 번호 이기 때문에
+                Article foundArticle = null;// null로 초기화 Article안에 있는 articles를 찾기 위해
+
+                for(Article article : articles) { //articles 안에 article 객체들을 찾아본다
+                    if (article.id == id) {
+                        foundArticle = article; //일치한다면 foundArticle 변수에 해당 객체를 할당하고
+                        break;// 종료한다
+                    }
+                }
+                    if(foundArticle == null){ //사용자가 요청한 게시물 id에 해당하는 게시물이 리스트에 존재하지 않는다
+                        System.out.printf("%d번 게시물은 존재하지 않습니다\n", id);//
+                        continue;
+                    }
+
+                System.out.printf("번호 : %d\n", foundArticle.id);
+                System.out.printf("제목 : %s\n", foundArticle.title);
+                System.out.printf("내용 : %s\n", foundArticle.body);
+
             }
         }
         System.out.println("==프로그램 끝=="); // 모든게 끝나면 프로그램이 끝난다
