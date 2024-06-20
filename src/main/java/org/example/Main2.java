@@ -67,10 +67,10 @@ public class Main2 {
                     }
                 }
                     if(foundArticle == null){ //사용자가 요청한 게시물 id에 해당하는 게시물이 리스트에 존재하지 않는다
-                        System.out.printf("%d번 게시물은 존재하지 않습니다\n", id);//
-                        continue;
+                        System.out.printf("%d번 게시물은 존재하지 않습니다\n", id);// id에 해당하는 게시물이 리스테 존재하지 않음을 의미함
+                        continue; // 다음 반복
                     }
-
+//foundArticle 변수에 저장된 게시물 객체가 있으면 해당 게시물 상세 정보를 id,title,body를 보여준다
                 System.out.printf("번호 : %d\n", foundArticle.id);
                 System.out.printf("제목 : %s\n", foundArticle.title);
                 System.out.printf("내용 : %s\n", foundArticle.body);
