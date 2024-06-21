@@ -74,7 +74,25 @@ public class Main2 {
                 System.out.printf("번호 : %d\n", foundArticle.id);
                 System.out.printf("제목 : %s\n", foundArticle.title);
                 System.out.printf("내용 : %s\n", foundArticle.body);
+// 몇번째 게시물을 지워야하는지 내용은 detail 코드와 유사하다
+            }else if (cmd.startsWith("article delete")){//명령어가 article delete 로 시작하는지 확인한다
+                String[] cmdBits = cmd.split(" ");// 문자열 공백을 분리한다
+                int id = Integer.parseInt(cmdBits[2]);// 문자열 형태를 게시물 번호를 수정해 정수로 변환한다
 
+                Article foundArticle = null;//article 안에 foundArticle를 찾는데 기본값으로는 업다는 걸 가정으로
+
+                for(Article article : articles){//article 리스트를 보면서
+                    if(article.id == id){//article delete ? 뒤에 id와 일치하면
+                        foundArticle = article;// foundArticle 안에 넣고 반복을 종료한다
+                        break;
+                    }
+                }
+                if (foundArticle == null) {//만약에 변수가 아직 null이면
+                    System.out.printf("%d번 게시물은 존재하지 않습니다\n", id);//해당 메시지를 출력한다
+                    continue;//명령어) 이모양으로 다시 돌아간다
+                }
+                articles.remove(foundArticle);//articles 리스트안에는 foundArticle에 저장되어 넣은 정보를 삭제한다
+                System.out.printf("%d번 게시물을 삭제했습니다\n", id);// 삭제한 출력문을 내보낸다
             }
         }
         System.out.println("==프로그램 끝=="); // 모든게 끝나면 프로그램이 끝난다
