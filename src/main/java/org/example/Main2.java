@@ -79,7 +79,7 @@ public class Main2 {
         }
         System.out.println("==프로그램 끝=="); // 모든게 끝나면 프로그램이 끝난다
 
-        sc.close(); // Scanner를 닫는
+        sc.close(); // Scanner를 닫는다
     }
 }
 
