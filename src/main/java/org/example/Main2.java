@@ -33,7 +33,8 @@ public class Main2 {
                 String title = sc.nextLine();
                 System.out.printf("내용 : ");
                 String body = sc.nextLine();
-                Article article = new Article(lasArticleId, title, body); //제목을 입력받아 Article 객체를 생성함
+
+                Article article = new Article(lasArticleId, Util.getDateStr(), title, body); //제목을 입력받아 Article 객체를 생성함
                 articles.add(article);//article 리스트에 추가하고, 게시물 생성 메시지를 출력한다.
             }
             else if(cmd.equals("article list")) {// 만약에 article list를 입력하면 명령어를 실행하는데
@@ -42,7 +43,7 @@ public class Main2 {
                     continue;// 그 다음 프로그램 처음으로 돌아간다
                 }
 
-                System.out.println("번호  /   제목");
+                System.out.println("번호  /   제목  /   작성일");
                 for (int i = articles.size() - 1; i >= 0; i--) {
                     //int i = articles.size() - 1 article.size는 articles의 리스트 요소 개수를 반환다
                     //-1은 리스트의 마지막 요소 개수를 반환한다.(인덱스는 0부터 시작하기 때문에 크기에서 1을 뺀다)
@@ -50,7 +51,7 @@ public class Main2 {
                     //i-- 반복이 끝날때마다 반복해서 i의 값을 감소시킨다
                     //리스트의 인덱스가 처음(0)까지 도달할 때까지 루프를 실행한다
                     Article article = articles.get(i);//i 해당하는 Article 를 반환한다
-                    System.out.printf("%d	/	%s\n", article.id, article.title);
+                    System.out.printf("%d	/	%s	/	%s\n", article.id, article.regDate ,article.title);
                 }// 확면에 보여준다 id(번호),title(제목)
             } else if (cmd.startsWith("article detail")) { //입력한 명령어가 article detail로 시작하는지 확인함
              String[] cmdBits = cmd.split(" "); //입력받은 명령어를 공백 지준으로 분리해서 배열에 저장한다
@@ -93,6 +94,8 @@ public class Main2 {
                 }
                 articles.remove(foundArticle);//articles 리스트안에는 foundArticle에 저장되어 넣은 정보를 삭제한다
                 System.out.printf("%d번 게시물을 삭제했습니다\n", id);// 삭제한 출력문을 내보낸다
+            }else{
+                System.out.println("없는 명령어");
             }
         }
         System.out.println("==프로그램 끝=="); // 모든게 끝나면 프로그램이 끝난다
@@ -103,13 +106,14 @@ public class Main2 {
 
 class Article {// Article이라는 클래스를 생성
     int id;// id값을 주고
+    String regDate;
     String title;// 문자열인 제목
     String body;// 문자열인 내용
 
-    Article(int id, String title, String body){// 생성자를 통해 객체를 초기화함
+    Article(int id, String title, String body, String regDate){// 생성자를 통해 객체를 초기화함
         this.id = id; //번호
         this.title = title; // 제목
         this.body = body; // 내용
-
+        this.regDate = regDate;
     }
 }
