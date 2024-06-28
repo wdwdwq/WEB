@@ -1,4 +1,4 @@
-package org.example;
+package org.Article;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.Scanner;
 // while ~하는 동안에
 // if 만약에
 // for 이거라면
-public class Main2 {
+public class Main {
     public static void main(String[] args) {
         System.out.println("==프로그램 시작==");//코드를 시작하자마자 화면에 보여줌
 
